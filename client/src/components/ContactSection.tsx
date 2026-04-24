@@ -1,36 +1,55 @@
-/**
- * ContactSection — Contact form with budget selector
- * Design: Dark Organic Warmth — clean form, amber CTA button
- */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { toast } from "sonner";
 
-const budgetOptions = [
-  "< $1,000",
-  "$1,000 - $5,000",
-  "$5,000 - $10,000",
-  "$10,000 - $20,000",
-  "> $20,000",
-];
+// Get your free access key at https://web3forms.com — enter your email and paste the key here
+const WEB3FORMS_ACCESS_KEY = "d1fe9ea1-762a-412e-9947-35249c2afc4d";
 
 export default function ContactSection() {
   const { ref, inView } = useInView(0.1);
-  const [selectedBudget, setSelectedBudget] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send to a backend endpoint
-    toast.success("Message received! I'll get back to you within 24 hours.");
-    setEmail("");
-    setPhone("");
-    setMessage("");
-    setSelectedBudget("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New message from ${name || email} — Portfolio`,
+          from_name: name || email,
+          name,
+          email,
+          phone,
+          message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Message received! I'll get back to you within 24 hours.");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Failed to send message. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputStyle = {
@@ -104,6 +123,27 @@ export default function ContactSection() {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4"
       >
+        {/* Name */}
+        <div>
+          <label
+            className="block text-xs mb-1.5"
+            style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
+          >
+            Your Name
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full px-4 py-3 rounded-xl"
+            style={inputStyle}
+            onFocus={(e) => (e.target.style.borderColor = "oklch(0.72 0.18 45 / 50%)")}
+            onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 10%)")}
+          />
+        </div>
+
         {/* Email */}
         <div>
           <label
@@ -114,7 +154,7 @@ export default function ContactSection() {
           </label>
           <input
             type="email"
-            placeholder="Enter the Email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -151,12 +191,13 @@ export default function ContactSection() {
             className="block text-xs mb-1.5"
             style={{ color: "oklch(0.5 0.008 60)", fontFamily: "'Space Mono', monospace" }}
           >
-            Messenger
+            Message
           </label>
           <textarea
             placeholder="Tell me about your project..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            required
             rows={4}
             className="w-full px-4 py-3 rounded-xl resize-none"
             style={inputStyle}
@@ -165,12 +206,11 @@ export default function ContactSection() {
           />
         </div>
 
-
-
         {/* Submit */}
         <button
           type="submit"
-          className="flex items-center justify-between w-full px-5 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-[1.02] mt-2"
+          disabled={isSubmitting}
+          className="flex items-center justify-between w-full px-5 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-[1.02] mt-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
           style={{
             background: "oklch(0.72 0.18 45)",
             color: "oklch(1 0 0)",
@@ -178,12 +218,12 @@ export default function ContactSection() {
             fontSize: "0.95rem",
           }}
         >
-          <span>Get Started</span>
+          <span>{isSubmitting ? "Sending..." : "Get Started"}</span>
           <div
             className="w-9 h-9 rounded-full flex items-center justify-center"
             style={{ background: "oklch(1 0 0 / 20%)" }}
           >
-            <ArrowUpRight size={16} />
+            {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <ArrowUpRight size={16} />}
           </div>
         </button>
       </motion.form>
