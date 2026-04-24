@@ -33,6 +33,7 @@ const projects = [
     year: "2024",
     color: "oklch(0.5 0.12 280)",
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
+    href: "https://pulatov-school.tj",
   },
 ];
 
@@ -92,8 +93,11 @@ export default function SelectedWorks() {
       {/* Projects grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
         {projects.map((project, i) => (
-          <motion.div
+          <motion.a
             key={project.title}
+            href={project.href ?? undefined}
+            target={project.href ? "_blank" : undefined}
+            rel={project.href ? "noopener noreferrer" : undefined}
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
@@ -216,7 +220,7 @@ export default function SelectedWorks() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </section>
