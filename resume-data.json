@@ -1,0 +1,115 @@
+{
+  "profile": {
+    "name": "Saidamir Bobojonov",
+    "title": "Python Backend Engineer",
+    "email": "saidamirbobojonov@icloud.com",
+    "phone": "(347) 768-3773",
+    "location": "Brooklyn, NY",
+    "linkedin": "linkedin.com/in/saidamirbobojonov",
+    "github": "github.com/saidamirbobojonov",
+    "summary": "Backend-focused software engineer with experience building production-grade systems in Python (Django, DRF, FastAPI) and Node.js, with hands-on expertise in microservices architecture, Docker, Kubernetes, Kafka, and Redis."
+  },
+  "skills": {
+    "languages": ["Python", "JavaScript", "SQL"],
+    "backend": ["Django", "Django REST Framework (DRF)", "FastAPI", "Node.js"],
+    "frontend": ["React.js", "HTML5", "CSS3"],
+    "databases": ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+    "devops": ["Docker", "Kubernetes", "Kafka", "Nginx", "Gunicorn", "S3/MinIO"],
+    "tools": ["Git", "PyTest", "Google Drive API", "REST API Design", "Microservices Architecture", "OOP", "CI/CD"]
+  },
+  "experience": [
+    {
+      "company": "FNF Global Inc.",
+      "title": "Backend Engineer",
+      "location": "Khujand, Tajikistan (U.S.-based company)",
+      "period": "Nov 2025 – Feb 2026",
+      "highlights": [
+        "Architected and delivered a production-grade LMS (Learning Management System) for employee training and logistics workflows, decomposed into 5+ independently deployable microservices using Node.js and Django REST Framework — containerized with Docker and orchestrated via Kubernetes.",
+        "Integrated Apache Kafka for asynchronous inter-service messaging, decoupling notification, event-processing, and training-progress pipelines from core application services.",
+        "Built Google Drive API integration to automate document management workflows — enabling automatic file organization, access control, and reporting without manual intervention.",
+        "Designed and optimized PostgreSQL schemas for multi-tenant user and course data, implementing indexing strategies that reduced average query latency by ~30%.",
+        "Configured Nginx reverse proxy with Gunicorn workers and S3/MinIO object storage for media and content asset management."
+      ]
+    },
+    {
+      "company": "Cultural & Historical Complex of Khujand Fortress",
+      "title": "Software Developer & Technical Project Coordinator",
+      "location": "Khujand, Tajikistan",
+      "period": "Dec 2024 – Nov 2025",
+      "highlights": [
+        "Designed, developed, and maintained the official institutional website using Django and Python, including backend logic, PostgreSQL database schema design, admin panel customization, and dynamic content management.",
+        "Built internal utility tools including a QR code generation system used for exhibit labeling and visitor information — reducing manual coordination effort across departments.",
+        "Managed website content administration and ensured consistent uptime for a live public-facing production environment.",
+        "Authored technical sections of grant proposals for international cultural preservation programs, contributing to successful funding applications from EU and CIS-region bodies."
+      ]
+    },
+    {
+      "company": "Federal Institute for Materials Research and Testing (BAM)",
+      "title": "Python Programmer Intern",
+      "location": "Berlin, Germany",
+      "period": "Jun 2024 – Aug 2024",
+      "highlights": [
+        "Developed Python automation scripts and ML (machine learning) models using scikit-learn to detect structural defects and classify material properties — improving defect identification accuracy by ~40% over prior manual baselines.",
+        "Engineered end-to-end data ingestion and preprocessing pipelines in Python, reducing analyst data preparation time by 45% and enabling faster model training and validation cycles.",
+        "Collaborated with a cross-functional team of materials scientists and engineers to integrate automated workflows into existing laboratory systems.",
+        "Recognized with an official Certified Internship Python Programmer credential issued by BAM Berlin (2024)."
+      ]
+    },
+    {
+      "company": "Technology Park, Khujand State University",
+      "title": "Software Developer & Technical Project Coordinator",
+      "location": "Khujand, Tajikistan",
+      "period": "Apr 2020 – May 2024 · Sep 2024 – Feb 2026",
+      "highlights": [
+        "Developed and maintained multiple institutional websites using Django and Python, implementing CMS features, admin tooling, and dynamic content management — including pulatov-school.tj and tourismcenter.tj (both live in production).",
+        "Built internal utility tools and automation scripts to streamline university operations, improving staff workflows and reducing manual administrative overhead.",
+        "Authored technical sections of grant proposals for international programs (EU, CIS-region funding bodies), contributing to successful applications for university digitization and innovation initiatives.",
+        "Provided full-stack technical support across web infrastructure, internal university systems, and staff-facing tooling.",
+        "Collaborated with faculty and administrative teams to scope, plan, and deliver software projects aligned with institutional goals."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "LMS Microservices Platform",
+      "category": "Backend Architecture",
+      "description": "Built a full multi-tenant LMS for a U.S. logistics company, decomposed into independently deployable microservices. Includes auth, course management, content delivery, real-time notifications via Kafka, Google Drive automation, and admin dashboard. Deployed on Kubernetes.",
+      "tech": ["Node.js", "Django", "FastAPI", "Kafka", "Docker", "Kubernetes", "PostgreSQL", "Redis", "Google Drive API"],
+      "date": "2025"
+    },
+    {
+      "name": "Materials Defect Detection System",
+      "category": "Machine Learning",
+      "description": "Developed ML-based defect classification and Python automation pipelines for BAM Berlin research lab, achieving ~40% accuracy improvement over manual baselines in structural materials testing.",
+      "tech": ["Python", "scikit-learn", "ML", "Data Pipelines"],
+      "date": "2024"
+    },
+    {
+      "name": "pulatov-school.tj & tourismcenter.tj",
+      "category": "Full Stack Web Development",
+      "description": "Developed and deployed two live production websites — a school platform and a tourism center portal — including CMS, admin tooling, QR tools, and dynamic content management.",
+      "tech": ["Django", "PostgreSQL", "CMS", "Full Stack"],
+      "date": "2024",
+      "links": ["www.pulatov-school.tj", "tourismcenter.tj"]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Science, Software and Computer Science",
+    "school": "Khujand State University",
+    "location": "Khujand, Tajikistan",
+    "graduation": "May 2025"
+  },
+  "certifications": [
+    {
+      "name": "Certified Internship Python Programmer",
+      "issuer": "Federal Institute for Materials Research and Testing BAM, Berlin",
+      "year": "2024"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Professional Working" },
+    { "name": "Russian", "level": "Full Professional" },
+    { "name": "Tajik", "level": "Native" }
+  ],
+  "interests": ["Mathematics", "Football", "Backend Architecture", "Microservices", "Open Source"]
+}
