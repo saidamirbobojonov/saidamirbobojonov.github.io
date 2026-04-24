@@ -53,7 +53,7 @@ export default function Home() {
         {/* Right content — scrollable */}
         <main
           className="flex-1 min-w-0"
-          style={{ padding: "1.5rem 2.5rem 1.5rem 1.5rem", maxWidth: "820px" }}
+          style={{ padding: "1.5rem 2.5rem 1.5rem 1.5rem" }}
         >
           {/* Mobile profile card */}
           <div className="lg:hidden mb-6">

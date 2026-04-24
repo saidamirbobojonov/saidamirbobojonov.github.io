@@ -5,9 +5,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Globe, Linkedin } from "lucide-react";
 
-// Professional headshot
-const PORTRAIT_URL =
-  "/manus-storage/pasted_file_OJB21n_IMG_7229_a40a2e6f.jpg";
+const PORTRAIT_URL = "/avatar.jpeg";
 
 const socialLinks = [
   {
