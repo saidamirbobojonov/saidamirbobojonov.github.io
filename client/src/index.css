@@ -177,7 +177,7 @@ html {
 /* Section divider */
 .section-divider {
   border: none;
-  border-top: 1px solid oklch(1 0 0 / 6%);
+  border-top: 1px solid oklch(0 0 0 / 8%);
   margin: 0;
 }
 

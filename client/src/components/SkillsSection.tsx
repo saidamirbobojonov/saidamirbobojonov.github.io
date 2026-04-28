@@ -174,7 +174,7 @@ export default function SkillsSection() {
           lineHeight: 1.15,
         }}
       >
-        Expertise Across Full Stack Development
+        Deep Backend Expertise, Full Stack Capable
       </motion.h2>
 
       <div className="flex flex-col gap-3 mb-8">

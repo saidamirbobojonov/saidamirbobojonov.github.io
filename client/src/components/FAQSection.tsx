@@ -1,31 +1,27 @@
-/**
- * FAQSection — Frequently asked questions accordion
- * Design: Dark Organic Warmth — clean accordion with amber accents
- */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 
 const faqs = [
   {
-    q: "What types of projects do you work on?",
-    a: "I specialize in brand identity, UI/UX design, Webflow development, and Framer prototyping. From startups to established companies, I help create compelling digital experiences.",
+    q: "What types of backend projects do you take on?",
+    a: "I specialize in Python-based backend systems — Django REST APIs, FastAPI microservices, PostgreSQL database design, Kafka-based messaging, and Kubernetes deployments. I'm comfortable with greenfield builds and scaling existing systems.",
   },
   {
-    q: "How long does a typical project take?",
-    a: "Project timelines vary based on scope. A brand identity project typically takes 2-3 weeks, while a full website design and development can take 4-8 weeks.",
+    q: "Are you available for full-time roles?",
+    a: "Yes — I'm actively looking for full-time backend engineering roles in the U.S. I'm based in Brooklyn, NY, authorized to work in the U.S., and available to start immediately.",
   },
   {
-    q: "Do you work with international clients?",
-    a: "Absolutely! I work with clients worldwide. Communication is handled via email, Slack, and video calls, making remote collaboration seamless.",
+    q: "Can you work remotely or on-site?",
+    a: "I'm flexible — remote, hybrid, or on-site anywhere in the New York metro area. I've worked with distributed teams across multiple time zones.",
   },
   {
-    q: "What is your revision policy?",
-    a: "Standard plans include 2 revision rounds, while Premium plans offer unlimited revisions. I want to ensure you're completely satisfied with the final result.",
+    q: "What's your approach to system design?",
+    a: "I prioritize clear service boundaries, idempotent APIs, and schema-first database design. I document architectural decisions and keep services independently deployable. I lean on proven patterns rather than premature abstraction.",
   },
   {
-    q: "How do we get started?",
-    a: "Simply fill out the contact form below or book a call. I'll review your brief and get back to you within 24 hours with a proposal.",
+    q: "How do I get in touch?",
+    a: "Fill out the contact form below or email me directly at saidamirbobojonov@icloud.com. I reply within 24 hours.",
   },
 ];
 
@@ -35,17 +31,13 @@ export default function FAQSection() {
 
   return (
     <section id="faqs" ref={ref} className="py-12">
-      {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="flex items-center gap-2 mb-8"
       >
-        <span
-          className="w-1.5 h-1.5 rounded-full"
-          style={{ background: "oklch(0.72 0.18 45)" }}
-        />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "oklch(0.72 0.18 45)" }} />
         <span
           className="text-xs uppercase tracking-widest"
           style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
@@ -67,7 +59,7 @@ export default function FAQSection() {
           lineHeight: 1.15,
         }}
       >
-        Frequently Asked Questions
+        Common Questions
       </motion.h2>
 
       <div className="flex flex-col gap-2">
@@ -90,10 +82,7 @@ export default function FAQSection() {
             >
               <span
                 className="font-medium text-sm pr-4"
-                style={{
-                  color: "oklch(0.15 0.008 60)",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                }}
+                style={{ color: "oklch(0.15 0.008 60)", fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 {faq.q}
               </span>
@@ -132,7 +121,7 @@ export default function FAQSection() {
                     style={{
                       color: "oklch(0.35 0.008 60)",
                       fontFamily: "'DM Sans', sans-serif",
-                      lineHeight: 1.6,
+                      lineHeight: 1.65,
                     }}
                   >
                     {faq.a}

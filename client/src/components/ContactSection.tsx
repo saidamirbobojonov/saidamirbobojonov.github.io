@@ -123,46 +123,46 @@ export default function ContactSection() {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4"
       >
-        {/* Name */}
-        <div>
-          <label
-            className="block text-xs mb-1.5"
-            style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
-          >
-            Your Name
-          </label>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="w-full px-4 py-3 rounded-xl"
-            style={inputStyle}
-            onFocus={(e) => (e.target.style.borderColor = "oklch(0.72 0.18 45 / 50%)")}
-            onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 10%)")}
-          />
-        </div>
-
-        {/* Email */}
-        <div>
-          <label
-            className="block text-xs mb-1.5"
-            style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
-          >
-            Your Email
-          </label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-3 rounded-xl"
-            style={inputStyle}
-            onFocus={(e) => (e.target.style.borderColor = "oklch(0.72 0.18 45 / 50%)")}
-            onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 10%)")}
-          />
+        {/* Name + Email row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label
+              className="block text-xs mb-1.5"
+              style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
+            >
+              Your Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-xl"
+              style={inputStyle}
+              onFocus={(e) => (e.target.style.borderColor = "oklch(0.72 0.18 45 / 50%)")}
+              onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 10%)")}
+            />
+          </div>
+          <div>
+            <label
+              className="block text-xs mb-1.5"
+              style={{ color: "oklch(0.55 0.01 60)", fontFamily: "'Space Mono', monospace" }}
+            >
+              Your Email
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-xl"
+              style={inputStyle}
+              onFocus={(e) => (e.target.style.borderColor = "oklch(0.72 0.18 45 / 50%)")}
+              onBlur={(e) => (e.target.style.borderColor = "oklch(0 0 0 / 10%)")}
+            />
+          </div>
         </div>
 
         {/* Phone */}

@@ -1,12 +1,26 @@
-/**
- * HeroSection — Introduction, skill tags, and stat counters
- * Design: Dark Organic Warmth — large display type, warm amber accents
- */
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
-const skillTags = ["Python", "Django", "Microservices", "Docker & Kubernetes", "PostgreSQL", "FastAPI", "AWS/Cloud", "REST APIs", "React", "TypeScript", "Tailwind CSS"];
+const skillTags = ["Python", "Django", "Microservices", "Docker & Kubernetes", "PostgreSQL", "FastAPI", "AWS/Cloud", "REST APIs", "React", "TypeScript"];
+
+function LiveClock() {
+  const [time, setTime] = useState(() =>
+    new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZone: "America/New_York" })
+  );
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZone: "America/New_York" }));
+    }, 30000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span style={{ color: "oklch(0.5 0.008 60)", fontFamily: "'Space Mono', monospace", fontSize: "0.75rem" }}>
+      Brooklyn, NY · {time}
+    </span>
+  );
+}
 
 function StatCard({
   label,
@@ -28,7 +42,7 @@ function StatCard({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay }}
-      className="flex-1 rounded-2xl p-6 flex flex-col gap-2"
+      className="flex-1 rounded-2xl p-5 flex flex-col gap-2"
       style={{
         background: "oklch(0.95 0.003 60)",
         border: "1px solid oklch(0 0 0 / 10%)",
@@ -36,27 +50,23 @@ function StatCard({
       }}
     >
       <div className="flex items-center gap-1.5">
+        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "oklch(0.72 0.18 45)" }} />
         <span
-          className="w-1.5 h-1.5 rounded-full"
-          style={{ background: "oklch(0.72 0.18 45)" }}
-        />
-        <span
-          className="text-xs uppercase tracking-widest"
+          className="text-xs uppercase tracking-widest leading-tight"
           style={{ color: "oklch(0.5 0.008 60)", fontFamily: "'Space Mono', monospace" }}
         >
           {label}
         </span>
       </div>
       <div
-        className="text-6xl font-bold leading-none mt-2"
+        className="text-5xl font-bold leading-none mt-1"
         style={{
           fontFamily: "'Space Grotesk', sans-serif",
           color: "oklch(0.15 0.008 60)",
           letterSpacing: "-0.03em",
         }}
       >
-        {count}
-        {suffix}
+        {count}{suffix}
       </div>
     </motion.div>
   );
@@ -67,7 +77,7 @@ export default function HeroSection() {
 
   return (
     <section id="home" ref={sectionRef} className="pt-8 pb-12 relative">
-      {/* Location & time */}
+      {/* Location & live time */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
@@ -75,11 +85,10 @@ export default function HeroSection() {
         className="flex items-center gap-2 mb-8"
       >
         <span
-          className="text-xs"
-          style={{ color: "oklch(0.5 0.008 60)", fontFamily: "'Space Mono', monospace" }}
-        >
-          New York, NY 10:24 AM
-        </span>
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: "oklch(0.55 0.18 145)", boxShadow: "0 0 6px oklch(0.55 0.18 145 / 60%)" }}
+        />
+        <LiveClock />
       </motion.div>
 
       {/* Section label */}
@@ -89,10 +98,7 @@ export default function HeroSection() {
         transition={{ duration: 0.4, delay: 0.05 }}
         className="flex items-center gap-2 mb-4"
       >
-        <span
-          className="w-1.5 h-1.5 rounded-full"
-          style={{ background: "oklch(0.72 0.18 45)" }}
-        />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "oklch(0.72 0.18 45)" }} />
         <span
           className="text-xs uppercase tracking-widest"
           style={{ color: "oklch(0.5 0.008 60)", fontFamily: "'Space Mono', monospace" }}
@@ -115,7 +121,7 @@ export default function HeroSection() {
           lineHeight: 1.1,
         }}
       >
-        Building Production-Grade Backend Systems
+        Building Production‑Grade Backend Systems
       </motion.h1>
 
       {/* Subtitle */}
@@ -123,15 +129,16 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 16 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mb-6 max-w-md"
+        className="mb-6 max-w-lg"
         style={{
           color: "oklch(0.4 0.008 60)",
           fontFamily: "'DM Sans', sans-serif",
           fontSize: "0.9rem",
-          lineHeight: 1.6,
+          lineHeight: 1.65,
         }}
       >
-        Python backend engineer specializing in microservices architecture, scalable systems design, and DevOps. Experienced with Django, FastAPI, Kubernetes, and cloud infrastructure.
+        Python backend engineer specializing in microservices architecture, scalable systems design, and DevOps.
+        Experienced with Django, FastAPI, Kubernetes, and cloud infrastructure — available immediately in Brooklyn, NY.
       </motion.p>
 
       {/* Skill tags */}
@@ -158,9 +165,11 @@ export default function HeroSection() {
         ))}
       </motion.div>
 
-      {/* Stats */}
-      <div className="flex gap-4">
-        <StatCard label="Years Experience" value={4} suffix="+" delay={0.1} />
+      {/* Stats row */}
+      <div className="flex gap-3 flex-wrap sm:flex-nowrap">
+        <StatCard label="Years Exp." value={4} suffix="+" delay={0.1} />
+        <StatCard label="Projects" value={10} suffix="+" delay={0.15} />
+        <StatCard label="Countries" value={3} suffix="" delay={0.2} />
       </div>
 
       {/* Decorative background glow */}

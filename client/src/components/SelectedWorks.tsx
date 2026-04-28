@@ -14,7 +14,7 @@ const projects = [
     tech: ["Node.js", "Django", "Kafka", "Docker", "Kubernetes"],
     year: "2025",
     color: "oklch(0.72 0.18 45)",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop",
   },
   {
     title: "Materials Defect Detection",
@@ -23,16 +23,16 @@ const projects = [
     tech: ["Python", "scikit-learn", "Data Pipelines", "ML"],
     year: "2024",
     color: "oklch(0.6 0.15 30)",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
   },
   {
     title: "Institutional Websites",
     category: "Full Stack Web",
-    description: "Production websites for school and tourism center with CMS, admin tooling, and QR generation",
+    description: "Production websites for school and tourism center with CMS, admin tooling, and QR code generation",
     tech: ["Django", "PostgreSQL", "CMS", "React"],
     year: "2024",
     color: "oklch(0.5 0.12 280)",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
     href: "https://pulatov-school.tj",
   },
 ];
@@ -91,7 +91,7 @@ export default function SelectedWorks() {
       </motion.div>
 
       {/* Projects grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project, i) => (
           <motion.a
             key={project.title}
@@ -101,29 +101,23 @@ export default function SelectedWorks() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-            className="group relative rounded-2xl overflow-hidden h-80 cursor-pointer"
+            className="group relative rounded-2xl overflow-hidden cursor-pointer"
+            style={{ height: i === 2 ? "260px" : "300px", gridColumn: i === 2 ? "1 / -1" : undefined }}
           >
-            {/* Overlay */}
+            {/* Background image */}
+            <div
+              className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+              style={{
+                backgroundImage: `url(${project.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+            {/* Color + dark overlay */}
             <div
               className="absolute inset-0 transition-all duration-300"
               style={{
-                background: `linear-gradient(135deg, ${project.color} 0%, ${project.color}cc 50%, ${project.color}aa 100%)`,
-              }}
-            />
-            {/* Border highlight */}
-            <div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                border: `2px solid ${project.color}`,
-                opacity: 0.4,
-              }}
-            />
-
-            {/* Dark overlay for better text contrast */}
-            <div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)",
+                background: `linear-gradient(135deg, ${project.color}cc 0%, ${project.color}99 40%, rgba(0,0,0,0.55) 100%)`,
               }}
             />
 
